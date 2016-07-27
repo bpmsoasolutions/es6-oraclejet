@@ -1,0 +1,9 @@
+.DS_Store
+.vscode
+node_modules/
+src/bower_modules/
+
+# Don't track build output
+dist/
+temp/
+typings/

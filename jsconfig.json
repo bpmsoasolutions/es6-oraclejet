@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es2015",
+        "allowSyntheticDefaultImports": true,
+         "experimentalDecorators": true
+    },
+    "exclude": [
+        "node_modules",
+        "src/bower_modules",
+        "temp",
+        "dist"
+    ]
+}

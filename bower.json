@@ -1,0 +1,18 @@
+{
+  "name": "ko-base",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "crossroads": "~0.12.0",
+    "hasher": "~1.2.0",
+    "requirejs": "~2.1.11",
+    "requirejs-text": "~2.0.10",
+    "knockout": "~3.4.0",
+    "knockout-projections": "~1.1.0",
+    "oraclejet": "^2.0.1",
+    "jet-komponents": "^0.5.2",
+    "moment": "^2.13.0",
+    "axios": "^0.11.0",
+    "font-awesome": "^4.6.3"
+  }
+}

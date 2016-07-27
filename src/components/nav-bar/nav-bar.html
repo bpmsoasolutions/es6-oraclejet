@@ -1,0 +1,98 @@
+<script type="text/html" id="navTemplate">
+<li>
+    <a data-bind="text: $data['name'], attr: { href: '/#' + $data['url']},css: $data['iconClass']"></a>
+</li>
+</script>
+<div class="oj-offcanvas-inner-wrapper">
+
+
+<!-- off-canvas content -->
+<div id="offcanvas" class="oj-contrast-marker oj-web-applayout-offcanvas oj-offcanvas-start">
+    <ojk-navigation-list params="
+        drillMode: 'none',
+        selection: selectedItem,
+        data: routes,
+        item: { template: 'navTemplate' }
+    "></ojk-navigation-list>
+</div>
+
+<div class="oj-web-applayout-scrollable-wrapper">
+<div class="oj-web-applayout-scrollable oj-web-applayout-page">
+    <div class="oj-web-applayout-header">
+
+        <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
+            <!-- Offcanvas toggle button -->
+            <div class="oj-flex-bar-start oj-md-hide">
+                <ojk-button params="
+                  click: toggleDrawer,
+                  label: 'Application Navigation',
+                  chroming: 'half',
+                  display: 'icons',
+                  icons: {start: 'fa fa-bars fa-2x'}
+                " class="oj-button-lg"></ojk-button>
+            </div>
+            <div data-bind="css: smScreen() ? 'oj-flex-bar-center-absolute' : 'oj-flex-bar-middle oj-sm-align-items-baseline'">
+                <span class="oj-web-applayout-header-title" title="Application Name" data-bind="text: appName"></span>
+            </div>
+            <div class="oj-flex-bar-end">
+                <!-- Responsive Toolbar -->
+                <ojk-toolbar>
+                    <ojk-button params="
+                        label: 'Search', display: 'icons', chroming: 'half',
+                        icons: {start:'oj-fwk-icon-magnifier oj-fwk-icon'}
+                    " class="oj-button-lg"></ojk-button>
+                    <span class="oj-toolbar-separator" role="separator" aria-orientation="vertical"></span>
+                    <ojk-button id="buttonIcon5" params="
+                        click: openPopup,
+                        display: 'icons',
+                        chroming: 'half',
+                        icons: { start: 'fa fa-cog fa-2x' },
+                        label: 'Button with two icons and no text'
+                    "></ojk-button>
+                    <ojk-button id="buttonIcon2" params="
+                        label: 'test@test.com',
+                        display: smScreen() ? 'icons' : 'all',
+                        icons: smScreen() ? {start: 'fa fa-user fa-2x', end: null} : {end: null},
+                        chroming: 'half',
+                        menu: '#menu1'
+                    "></ojk-button>
+                    <ojk-menu params="id:'menu1'" style="display:none">
+                        <li id="pref"><a href="#">Preferences</a></li>
+                        <li id="help"><a href="#">Help</a></li>
+                        <li id="about"><a href="#">About</a></li>
+                        <li id="out"><a href="#">Sign Out</a></li>
+                    </ojk-menu>
+
+                    <ojk-dialog params="rootAttributes: { style: 'width: 550px;height: 350px;'}, title: 'Project configuration', id: 'config'">
+                        <div class="oj-dialog-body">
+                            The Oracle JET QuickStart Basic template is meant as an example of how to setup a
+          very basic Single-Page-Application(SPA) with the JET libraries configured correctly.<br/><br/>
+          It contains examples for working with the ojModule libraries for basic template and paging support.
+          It incorporates responsive design patterns to work at all Oracle JET
+          Media Query sizes for Desktop, Tablet(portrait and landscape), and phone.<br/><br/>
+          Please refer to in code comments for details.
+                        </div>
+                    </ojk-dialog>
+                </ojk-toolbar>
+            </div>
+        </div>
+
+        <ojk-navigation-list params="
+            navigationLevel: 'application',
+            edge: 'top',
+            rootAttributes:{
+                class:'oj-web-applayout-navbar oj-sm-only-hide oj-web-applayout-max-width oj-navigationlist-item-dividers oj-md-condense oj-md-justify-content-center oj-lg-justify-content-flex-end'
+            },
+            selection: selectedItem,
+            data: routes,
+            item: { template: 'navTemplate' }
+        "></ojk-navigation-list>
+    </div>
+
+    <!-- ko with:$parent -->
+    <!-- ko template: { nodes: $componentTemplateNodes } -->
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+</div>
+</div>

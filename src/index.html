@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ko-base</title>
+    <link rel="icon" href="css/favicon.ico" type="image/x-icon" />
+
+    <!-- build:css -->
+        <link rel="stylesheet" href="bower_modules/oraclejet/dist/css/alta/oj-alta-min.css" type="text/css" />
+        <link rel="stylesheet" href="bower_modules/font-awesome/css/font-awesome.min.css" type="text/css" />
+        <link href="css/styles.css" rel="stylesheet">
+    <!-- endbuild -->
+    <!-- build:js -->
+        <script src="app/require.config.js"></script>
+        <script data-main="app/startup" src="bower_modules/requirejs/require.js"></script>
+    <!-- endbuild -->
+</head>
+
+<body>
+    <div id="globalBody" class="oj-web-applayout-offcanvas-wrapper oj-offcanvas-outer-wrapper">
+        <bss-nav-bar params="route: router.currentRoute">
+            <div class="oj-xl-12 oj-lg-12 oj-sm-12 oj-flex-item oj-flex">
+               <div id="content" class="oj-panel oj-margin oj-flex-item" data-bind="component: { name: router.currentRoute().container, params: {router: router } }"></div>
+            </div>
+            <bss-footer></bss-footer>
+        </bss-nav-bar>
+    </div>
+</body>
+
+</html>
