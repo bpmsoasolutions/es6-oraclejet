@@ -49,9 +49,9 @@ var requireJsRuntimeConfig = vm.runInNewContext(fs.readFileSync('src/app/require
         root: 'src',
         skip: ['bower_modules/**', 'app/require.config.js'],
         babelConfig: {
-            modules: 'amd',
             sourceMaps: 'inline',
-            stage: 0
+            plugins: ["add-module-exports", "transform-es2015-modules-amd"],
+            presets: ['es2015', 'stage-0']
         }
     },
     babelIgnoreRegexes = transpilationConfig.skip.map(function(item) {
@@ -181,7 +181,7 @@ gulp.task('serve:dist', ['default'], function() {
 
 function babelTranspile(pathname, callback) {
     if (babelIgnoreRegexes.some(function (re) { return re.test(pathname); })) return callback();
-    if (!babelCore.canCompile(pathname)) return callback();
+    if (!babelCore.util.canCompile(pathname)) return callback();
     var src  = path.join(transpilationConfig.root, pathname);
     var opts = objectAssign({ sourceFileName: '/source/' + pathname }, transpilationConfig.babelConfig);
     babelCore.transformFile(src, opts, callback);

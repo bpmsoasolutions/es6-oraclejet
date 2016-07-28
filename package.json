@@ -2,13 +2,16 @@
   "name": "ko-base",
   "version": "0.0.0",
   "devDependencies": {
-    "babel-core":"~5.8.38",
+    "babel-core": "^6.11.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-amd": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
     "chalk": "~0.4.0",
     "deeply": "~0.1.0",
     "event-stream": "~3.1.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
-    "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-clean": "~0.2.4",
     "gulp-concat": "~2.2.0",
     "gulp-connect": "^2.2.0",
@@ -16,6 +19,7 @@
     "gulp-html-replace": "~1.0.0",
     "gulp-replace": "~0.2.0",
     "gulp-requirejs-bundler": "^0.1.1",
+    "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "~0.2.1",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.10",
@@ -27,10 +31,9 @@
     "object-assign": "^4.0.1",
     "requirejs": "^2.1.11"
   },
-  "dependencies": {
-  },
-  "scripts":{
+  "dependencies": {},
+  "scripts": {
     "start": "grunt serve:src",
-    "dev":"./node_modules/.bin/concurrently 'grunt serve' 'node ./test'"
+    "dev": "./node_modules/.bin/concurrently 'grunt serve' 'node ./test'"
   }
 }
