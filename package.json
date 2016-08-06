@@ -31,7 +31,9 @@
     "object-assign": "^4.0.1",
     "requirejs": "^2.1.11"
   },
-  "dependencies": {},
+  "dependencies": {
+    "bower": "^1.7.9"
+  },
   "scripts": {
     "start": "grunt serve:src",
     "dev": "./node_modules/.bin/concurrently 'grunt serve' 'node ./test'"
