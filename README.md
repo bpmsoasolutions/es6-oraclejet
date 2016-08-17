@@ -18,8 +18,10 @@ In this project we tried to help devs to adopt new ECMAScript 6 flow. Using Orac
 
 * Clone Project
 * Run `npm install`
-* Run `bower install`
-* Run `gulp serve:src`
+* Run `bower install` (if you not have globally`./node_modules/.bin/bower`)
+* Run `gulp serve:src` (if you not have globally `./node_modules/.bin/gulp`)
+
+**Note**: For install globally run `npm install -g bower gulp`, else use node_modules included version.
 
 ## Tasks included
 

@@ -31,7 +31,9 @@
     "object-assign": "^4.0.1",
     "requirejs": "^2.1.11"
   },
-  "dependencies": {},
+  "dependencies": {
+    "bower": "^1.7.9"
+  },
   "scripts": {
     "start": "gulp serve:src",
     "build": "gulp serve:dist"
