@@ -33,7 +33,7 @@
   },
   "dependencies": {},
   "scripts": {
-    "start": "grunt serve:src",
-    "dev": "./node_modules/.bin/concurrently 'grunt serve' 'node ./test'"
+    "start": "gulp serve:src",
+    "build": "gulp serve:dist"
   }
 }
