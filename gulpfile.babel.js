@@ -19,3 +19,10 @@ gulp.task('default', ['html', 'js', 'css'], (callback) => {
     console.log('\nPlaced optimized files in ' + chalk.magenta('dist/\n'));
     callback()
 });
+
+gulp.task('cordova-build', ['html', 'js', 'css'], (callback) => {
+    gulp.src('./temp/**/*', { read: false })
+        .pipe(clean());
+    console.log('\nPlaced optimized files in ' + chalk.magenta('dist/\n'));
+    callback()
+});

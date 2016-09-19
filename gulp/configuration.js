@@ -12,9 +12,20 @@ let configuration = {
         'index': './src/index.html',
         'dist': './dist/',
         'temp': './temp/',
+        'html': './src/**/*.html',
+        'js': './src/**/*.js',
+        'app': './src/app/',
+        'css': './src/css/',
+        'containers': './src/containers/',
+        'components': './src/components/',
+
+        'cordovaPluginsFile': 'app/plugins/fetch.json',
+        'cordovaPlugins': 'app/plugins',
+        'cordovaPlatforms': 'app/platforms'
     },
 
     replaceHtmlConfig: {
+        'css-alta': 'css/alta.css',
         'css': 'css.css',
         'js': 'scripts.js'
     },
@@ -53,5 +64,11 @@ configuration.requireJsOptimizerConfig = merge(configuration.requireJsRuntimeCon
         // 'another-bundle-name': [ 'yet-another-module' ]
     }
 })
+
+var target = process.env.TARGET
+
+if (target === 'cordova'){
+    configuration.paths.dist = './app/www/'
+}
 
 export default configuration

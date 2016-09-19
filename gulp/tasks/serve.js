@@ -6,7 +6,7 @@ var url = require('url')
 import babelTranspile from '../babelTranspile'
 import configuration from '../configuration'
 
-gulp.task('serve:src', function() {
+gulp.task('serve:src', ['html:livereload', 'watch'], function() {
     return connect.server({
         root: configuration.transpilationConfig.root,
         middleware: function(connect, opt) {
@@ -25,7 +25,8 @@ gulp.task('serve:src', function() {
                      });
                  }
             ];
-        }
+        },
+        livereload: true
     });
 });
 

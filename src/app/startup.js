@@ -21,4 +21,13 @@ class MainModel {
     }
 }
 
-ko.applyBindings(new MainModel, document.getElementById('globalBody'));
+function init(){
+    ko.applyBindings(new MainModel, document.getElementById('globalBody'));
+}
+
+
+if ($(document.body).hasClass('oj-hybrid')) {
+    document.addEventListener("deviceready", init);
+} else {
+    init();
+}

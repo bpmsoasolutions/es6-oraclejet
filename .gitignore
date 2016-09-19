@@ -7,3 +7,30 @@ src/bower_modules/
 dist/
 temp/
 typings/
+
+# We are going to use the www directory as a place to dump the build artifacts so we can kick off cordova
+app/www/*
+!app/www/.gitkeep
+
+app/merge/*
+!app/merge/.gitkeep
+
+app/platforms/*
+!app/platforms/.gitkeep
+!app/platforms/platforms.json
+
+app/plugins/*
+!app/plugins/.gitkeep
+!app/plugins/fetch.json
+
+# Ignore all our dependency directors
+node_modules/
+jspm_packages/
+bower_components/
+
+# Because mac is a little derpy
+.DS_Store
+
+# Ignore the generated babel configuration file, this one can be generated doing a build.
+src/config.js
+src/external/
