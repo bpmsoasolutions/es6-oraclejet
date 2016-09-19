@@ -34,41 +34,45 @@ gulp.task('cordova:plugins', function () {
                     text = `${text} ${key}=${plug.vars[key]}`
                 })
 
-            exec("cd app;cordova plugin add " + plug.id + text, logCommand);
+            exec("cd app" + configuration.separatorCLI + "cordova plugin add " + plug.id + text, logCommand);
         } else {
-            exec("cd app;cordova plugin add " + plug.id, logCommand);
+            exec("cd app" + configuration.separatorCLI + "cordova plugin add " + plug.id, logCommand);
         }
     });
 });
 
 gulp.task('cordova:prepare', function () {
-    exec("cd app;cordova prepare")
+    exec("cd app" + configuration.separatorCLI + "cordova prepare")
 })
 
 gulp.task('cordova:compile', function () {
 
     let optional = ""
-    if (process.env['build-config']){
-        optional = optional + '--build-config=' + process.env['build-config']
+    if (argv.bcfg){
+		console.log("asasasas")
+        optional = optional + '--build-config=' + argv.bcfg
     }
 
-    if (process.env['release']){
+    if (argv.release){
         optional = optional + ' --release'
     } else {
         optional = optional + ' --debug'
     }
 
     if(argv.target){
-        exec("cd app;cordova compile " + argv.target + optional, logCommand)
+        exec("cd app" + configuration.separatorCLI + "cordova compile " + argv.target + optional, logCommand)
     } else {
-        exec("cd app;cordova compile" + optional, logCommand)
+        exec("cd app" + configuration.separatorCLI + "cordova compile" + optional, logCommand)
     }
 })
 
 gulp.task('cordova:run', function () {
     if(argv.target){
-        exec("cd app;cordova run " + argv.target, logCommand)
+        exec("cd app" + configuration.separatorCLI + "cordova run " + argv.target, logCommand)
     } else {
         console.log("No target specified...")
     }
+})
+gulp.task('cordova:emuweb', function () {
+	exec("cd app" + configuration.separatorCLI + "ripple emulate", logCommand)
 })

@@ -37,8 +37,8 @@
   },
   "dependencies": {},
   "scripts": {
-    "start:osx": "npm install;./node_modules/.bin/bower install",
-    "start:win": "npm install;node_modules\\.bin\\bower install",
+    "start:osx": "npm install;./node_modules/.bin/bower install; npm install -g ripple-emulator",
+    "start:win": "npm install && node_modules\\.bin\\bower install && npm install -g ripple-emulator",
     "cordova:android": "cd app;cordova prepare;cordova compile",
     "dev": "gulp serve:src",
     "build": "gulp serve:dist"

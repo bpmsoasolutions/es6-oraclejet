@@ -70,5 +70,6 @@ var target = process.env.TARGET
 if (target === 'cordova'){
     configuration.paths.dist = './app/www/'
 }
+configuration.separatorCLI= 'win32' == process.platform ? " && " : ";"
 
 export default configuration

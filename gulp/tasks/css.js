@@ -11,51 +11,51 @@ gulp.task('assetsJET', ['images:cordova', 'css:cordova', 'fonts:cordova'], funct
 gulp.task('images:cordova', function () {
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta-android/images/**/*', {
         base: './src/bower_modules/oraclejet/dist/css/alta-android'
-    }).pipe(gulp.dest('app/merge/android'));
+    }).pipe(gulp.dest('app/merges/android'));
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta-ios/images/**/*', {
         base: './src/bower_modules/oraclejet/dist/css/alta-ios'
-    }).pipe(gulp.dest('app/merge/ios'));
+    }).pipe(gulp.dest('app/merges/ios'));
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta-windows/images/**/*', {
         base: './src/bower_modules/oraclejet/dist/css/alta-windows'
-    }).pipe(gulp.dest('app/merge/windows'));
+    }).pipe(gulp.dest('app/merges/windows'));
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta/images/**/*', {
         base: './src/bower_modules/oraclejet/dist/css/alta'
-    }).pipe(gulp.dest('app/merge/browser'));
+    }).pipe(gulp.dest('app/merges/browser'));
 })
 gulp.task('css:cordova', function () {
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta-android/oj-alta.css')
         .pipe(replace(/url\((')?\.\.\/fonts\//g, 'url($1fonts/'))
-        .pipe(gulp.dest('app/merge/android'));
+        .pipe(gulp.dest('app/merges/android'));
 
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta-ios/oj-alta.css')
         .pipe(replace(/url\((')?\.\.\/fonts\//g, 'url($1fonts/'))
-        .pipe(gulp.dest('app/merge/ios'));
+        .pipe(gulp.dest('app/merges/ios'));
 
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta-windows/oj-alta.css')
         .pipe(replace(/url\((')?\.\.\/fonts\//g, 'url($1fonts/'))
-        .pipe(gulp.dest('app/merge/windows'));
+        .pipe(gulp.dest('app/merges/windows'));
 
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta/oj-alta.css')
         .pipe(replace(/url\((')?\.\.\/fonts\//g, 'url($1fonts/'))
-        .pipe(gulp.dest('app/merge/browser'));
+        .pipe(gulp.dest('app/merges/browser'));
 })
 
 gulp.task('fonts:cordova', function () {
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta-android/fonts/**/*', {
         base: './src/bower_modules/oraclejet/dist/css/alta-android'
-    }).pipe(gulp.dest('app/merge/android'));
+    }).pipe(gulp.dest('app/merges/android'));
 
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta-ios/fonts/**/*', {
         base: './src/bower_modules/oraclejet/dist/css/alta-ios'
-    }).pipe(gulp.dest('app/merge/ios'));
+    }).pipe(gulp.dest('app/merges/ios'));
 
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta-windows/fonts/**/*', {
         base: './src/bower_modules/oraclejet/dist/css/alta-windows'
-    }).pipe(gulp.dest('app/merge/windows'));
+    }).pipe(gulp.dest('app/merges/windows'));
 
     gulp.src('./src/bower_modules/oraclejet/dist/css/alta/fonts/**/*', {
         base: './src/bower_modules/oraclejet/dist/css/alta'
-    }).pipe(gulp.dest('app/merge/browser'));
+    }).pipe(gulp.dest('app/merges/browser'));
 })
 
 
