@@ -11,7 +11,10 @@ import babelTranspile from '../babelTranspile'
 import configuration from '../configuration'
 
 gulp.task('js:babel', function() {
-    return gulp.src(configuration.requireJsOptimizerConfig.baseUrl + '/**')
+    return gulp.src([
+            `${configuration.requireJsOptimizerConfig.baseUrl}/**`,
+            `!${configuration.requireJsOptimizerConfig.baseUrl}/bower_modules/**/*`
+        ])
         .pipe(es.map(function(data, cb) {
             if (!data.isNull()) {
                 babelTranspile(data.relative, function(err, res) {
