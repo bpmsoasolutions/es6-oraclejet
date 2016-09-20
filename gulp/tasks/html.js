@@ -12,6 +12,11 @@ gulp.task('html', function() {
         .pipe(gulp.dest(configuration.paths.dist));
 });
 
+gulp.task('html:no-replace', function() {
+    return gulp.src(configuration.paths.index)
+        .pipe(gulp.dest(configuration.paths.dist));
+});
+
 gulp.task('html:livereload', function() {
     return gulp.src(configuration.paths.html)
         .pipe(connect.reload());

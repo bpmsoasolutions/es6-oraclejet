@@ -16,13 +16,11 @@ requireDir('./gulp/tasks', { recurse: false });
 gulp.task('default', ['html', 'js', 'css'], (callback) => {
     gulp.src('./temp/**/*', { read: false })
         .pipe(clean());
-    console.log('\nPlaced optimized files in ' + chalk.magenta('dist/\n'));
+    console.log('\nPlaced optimized files in ' + chalk.magenta(configuration.paths.dist));
     callback()
 });
 
-gulp.task('cordova-build', ['html', 'js', 'css'], (callback) => {
-    gulp.src('./temp/**/*', { read: false })
-        .pipe(clean());
-    console.log('\nPlaced optimized files in ' + chalk.magenta('dist/\n'));
+gulp.task('cordova:no-min', ['html:no-replace', 'js:no-optimize', 'css'], (callback) => {
+    console.log('\nPlaced files in ' + chalk.magenta(configuration.paths.dist));
     callback()
 });

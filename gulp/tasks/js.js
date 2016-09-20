@@ -17,7 +17,7 @@ gulp.task('js:bower_modules', function() {
 
 gulp.task('js:babel', function() {
     return gulp.src([
-        `${configuration.requireJsOptimizerConfig.baseUrl}/**`,
+        `${configuration.requireJsOptimizerConfig.baseUrl}/**/*`,
         `!${configuration.requireJsOptimizerConfig.baseUrl}/bower_modules`,
         `!${configuration.requireJsOptimizerConfig.baseUrl}/bower_modules/**/*`
     ])
@@ -43,6 +43,6 @@ gulp.task('js:optimize', ['js:babel', 'js:bower_modules'], function() {
         .pipe(gulp.dest(configuration.paths.dist));
 })
 
-gulp.task('js', ['js:optimize'], function () {
-    return gulp.src(configuration.paths.temp, { read: false }).pipe(clean());
-});
+gulp.task('js:no-optimize', ['js:babel', 'js:bower_modules'])
+
+gulp.task('js', ['js:optimize']);
