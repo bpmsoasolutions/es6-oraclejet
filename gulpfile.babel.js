@@ -14,8 +14,7 @@ requireDir('./gulp/tasks', { recurse: false });
 //gulp.task('default', ['connect', 'watch']);
 
 gulp.task('default', ['html', 'js', 'css'], (callback) => {
-    gulp.src('./temp/**/*', { read: false })
-        .pipe(clean());
+    //gulp.src('./temp/**/*', { read: false }).pipe(clean());
     console.log('\nPlaced optimized files in ' + chalk.magenta(configuration.paths.dist));
     callback()
 });
@@ -24,3 +23,4 @@ gulp.task('cordova:no-min', ['html:no-replace', 'js:no-optimize', 'css'], (callb
     console.log('\nPlaced files in ' + chalk.magenta(configuration.paths.dist));
     callback()
 });
+
