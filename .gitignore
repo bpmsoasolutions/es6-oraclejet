@@ -12,8 +12,8 @@ typings/
 app/www/*
 !app/www/.gitkeep
 
-app/merge/*
-!app/merge/.gitkeep
+app/merges/*
+!app/merges/.gitkeep
 
 app/platforms/*
 !app/platforms/.gitkeep
