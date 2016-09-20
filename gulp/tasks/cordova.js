@@ -73,8 +73,15 @@ gulp.task('cordova:run', function () {
         console.log("No target specified...")
     }
 })
-gulp.task('cordova:emuweb', function () {
-	exec("cd app" + configuration.separatorCLI + "ripple emulate", logCommand)
+
+gulp.task('cordova:ripple', function () {
+    let ripplePath = path.resolve('node_modules/.bin/ripple')
+
+    shell.cd('app')
+    shell.exec(`${ripplePath} emulate`, logCommand);
+    shell.cd('..')
+})
+
 //Clean cordova files and folders
 
 gulp.task('cordova:clean', ['cordova clean platforms', 'cordova clean plugins'], () => {
