@@ -1,77 +1,68 @@
-var gulp = require('gulp')
-var shell = require('shelljs/global')
-var exec = require('child_process').exec;
-var argv = require('yargs').argv;
+import gulp from 'gulp'
+import shell from 'shelljs'
+import {argv} from 'yargs'
+import path from 'path'
+import del from 'del'
 
 import configuration from '../configuration'
 
-function logCommand(error, stdout, stderr) {
-    if (error)
-        console.error(error)
+const logCommand = (error, stdout, stderr) => {
+    if (error) console.error(error)
 
     console.log(stdout)
 }
 
 gulp.task('cordova:plugins', function () {
 
-    var plugins = require('../../' + configuration.paths.cordovaPluginsFile);
-    var pluginlist = [];
+    let pluginPath = path.resolve(configuration.paths.cordovaPluginsFile)
+    let plugins = require(pluginPath);
 
-    for( var prop in plugins) {
-        let result = {}
+    shell.cd('app')
 
-        result['id'] = (plugins[prop].source.id) ? plugins[prop].source.id : plugins[prop].source.url
-        result['vars'] = (plugins[prop].variables && Object.keys(plugins[prop].variables).length > 0) ? plugins[prop].variables : null
+    // Loop in plugins
+    Object.keys(plugins)
+        .map((key)=>{
+            let plugin = plugins[key]
+            let id = (plugin.source.id) ? plugin.source.id : plugin.source.url
+            let variables = ''
 
-        pluginlist.push(result)
-    }
+            // Manage variables
+            if (plugin.variables && Object.keys(plugin.variables).length > 0) {
+                variables += '--variable'
+                Object.keys(plugin.variables)
+                    .map((key)=>{
+                        variables += ` ${key}=${plugin.variables[key]}`
+                    })
+            }
 
-    pluginlist.map(function(plug) {
-        if (plug.vars){
-            let text = " --variable "
-            Object.keys(plug.vars)
-                .map((key)=>{
-                    text = `${text} ${key}=${plug.vars[key]}`
-                })
-
-            exec("cd app" + configuration.separatorCLI + "cordova plugin add " + plug.id + text, logCommand);
-        } else {
-            exec("cd app" + configuration.separatorCLI + "cordova plugin add " + plug.id, logCommand);
-        }
-    });
+            shell.exec(`cordova plugin add ${id} ${variables}`, logCommand);
+        })
+    shell.cd('..')
 });
 
 gulp.task('cordova:prepare', function () {
-    exec("cd app" + configuration.separatorCLI + "cordova prepare")
+    shell.cd('app')
+    shell.exec('cordova prepare', logCommand);
+    shell.cd('..')
 })
 
 gulp.task('cordova:compile', function () {
 
-    let optional = ""
-    if (argv.bcfg){
-		console.log("asasasas")
-        optional = optional + '--build-config=' + argv.bcfg
-    }
+    let buildCfg = (argv.bcfg) ? `--build-config=${argv.bcfg}` : ''
+    let buildType = (argv.release) ? '--release' : '--debug'
+    let target = (argv.target) ? ` ${argv.target} ` : ''
 
-    if (argv.release){
-        optional = optional + ' --release'
-    } else {
-        optional = optional + ' --debug'
-    }
-
-    if(argv.target){
-        exec("cd app" + configuration.separatorCLI + "cordova compile " + argv.target + optional, logCommand)
-    } else {
-        exec("cd app" + configuration.separatorCLI + "cordova compile" + optional, logCommand)
-    }
+    shell.cd('app')
+    shell.exec(`cordova compile ${target} ${buildType} ${buildCfg}`, logCommand);
+    shell.cd('..')
 })
 
 gulp.task('cordova:run', function () {
-    if(argv.target){
-        exec("cd app" + configuration.separatorCLI + "cordova run " + argv.target, logCommand)
-    } else {
-        console.log("No target specified...")
-    }
+    if (!argv.target) console.log("No target specified.Exiting...")
+
+    shell.cd('app')
+    shell.exec(`cordova run ${argv.target}`, logCommand);
+    shell.cd('..')
 })
 
 gulp.task('cordova:ripple', function () {

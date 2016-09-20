@@ -20,12 +20,14 @@ let configuration = {
         'components': './src/components/',
 
         'cordovaPluginsFile': 'app/plugins/fetch.json',
-        'cordovaPlugins': 'app/plugins',
-        'cordovaPlatforms': 'app/platforms'
+        'cordovaPlugins': 'app/plugins/',
+        'cordovaPlatforms': 'app/platforms/',
+        'cordovaWWW': 'app/www/',
+        'cordovaMerges': 'app/merges/'
     },
 
     replaceHtmlConfig: {
-        'css-alta': 'css/alta.css',
+        'css-alta': 'oj-alta.css',
         'css': 'css.css',
         'js': 'scripts.js'
     },
@@ -70,6 +72,5 @@ var target = process.env.TARGET
 if (target === 'cordova'){
     configuration.paths.dist = './app/www/'
 }
-configuration.separatorCLI= 'win32' == process.platform ? " && " : ";"
 
 export default configuration
