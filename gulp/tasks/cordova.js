@@ -76,3 +76,22 @@ gulp.task('cordova:run', function () {
 gulp.task('cordova:emuweb', function () {
 	exec("cd app" + configuration.separatorCLI + "ripple emulate", logCommand)
 })
+gulp.task('cordova clean platforms', (cb) => {
+    return del([
+        configuration.paths.cordovaPlatforms + configuration.allFiles,
+        `!${configuration.paths.cordovaPlatforms}/platforms.json`
+    ], cb)
+});
+
+gulp.task('cordova clean plugins', (cb) => {
+    return del([
+        configuration.paths.cordovaPlugins + configuration.allFiles,
+        `!${configuration.paths.cordovaPlugins}/fetch.json`
+    ], cb)
+});
+
+gulp.task('cordova clean www', (cb) => {
+    return del([
+        configuration.paths.cordovaWWW + configuration.allFiles
+    ], cb)
+});
