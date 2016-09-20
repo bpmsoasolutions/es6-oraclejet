@@ -75,7 +75,12 @@ gulp.task('cordova:run', function () {
 })
 gulp.task('cordova:emuweb', function () {
 	exec("cd app" + configuration.separatorCLI + "ripple emulate", logCommand)
+//Clean cordova files and folders
+
+gulp.task('cordova:clean', ['cordova clean platforms', 'cordova clean plugins'], () => {
+    console.log('Cordova full clean.')
 })
+
 gulp.task('cordova clean platforms', (cb) => {
     return del([
         configuration.paths.cordovaPlatforms + configuration.allFiles,
