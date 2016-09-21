@@ -34,7 +34,7 @@ let configuration = {
 
     transpilationConfig:{
         root: 'src',
-        skip: ['bower_modules/**', 'app/require.config.js'],
+        skip: ['bower_modules', 'require.config.js'],
         babelConfig: {
             sourceMaps: 'inline',
             plugins: ["add-module-exports", "transform-es2015-modules-amd"],

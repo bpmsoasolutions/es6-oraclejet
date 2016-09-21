@@ -10,16 +10,9 @@ var clean = require('gulp-clean')
 import babelTranspile from '../babelTranspile'
 import configuration from '../configuration'
 
-gulp.task('js:bower_modules', function() {
-    return  gulp.src(`${configuration.requireJsOptimizerConfig.baseUrl}/bower_modules/**/*`)
-        .pipe(gulp.dest(`${configuration.paths.temp}/bower_modules`));
-})
-
 gulp.task('js:babel', function() {
     return gulp.src([
-        `${configuration.requireJsOptimizerConfig.baseUrl}/**/*`,
-        `!${configuration.requireJsOptimizerConfig.baseUrl}/bower_modules`,
-        `!${configuration.requireJsOptimizerConfig.baseUrl}/bower_modules/**/*`
+        `${configuration.requireJsOptimizerConfig.baseUrl}/**/*`
     ])
         .pipe(es.map(function(data, cb) {
             if (!data.isNull()) {
@@ -36,15 +29,14 @@ gulp.task('js:babel', function() {
         .pipe(gulp.dest(configuration.paths.temp));
 });
 
-gulp.task('js:optimize', ['js:babel', 'js:bower_modules'], function() {
+gulp.task('js:optimize', ['js:babel'], function() {
     var config = objectAssign({}, configuration.requireJsOptimizerConfig, { baseUrl: 'temp' });
     return rjs(config)
         .pipe(uglify({ preserveComments: 'some' }))
         .pipe(gulp.dest(configuration.paths.dist));
 })
 
-gulp.task('js:no-optimize', ['js:babel', 'js:bower_modules'], function() {
-
+gulp.task('js:no-optimize', ['js:babel'], function() {
     return gulp.src(`${configuration.paths.temp}/**/*`)
         .pipe(gulp.dest(configuration.paths.dist));
 })
