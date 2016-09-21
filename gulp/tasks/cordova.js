@@ -75,10 +75,6 @@ gulp.task('cordova:ripple', function () {
 
 //Clean cordova files and folders
 
-gulp.task('cordova:clean', ['cordova clean platforms', 'cordova clean plugins'], () => {
-    console.log('Cordova full clean.')
-})
-
 gulp.task('cordova clean platforms', (cb) => {
     return del([
         configuration.paths.cordovaPlatforms + configuration.allFiles,
@@ -93,8 +89,16 @@ gulp.task('cordova clean plugins', (cb) => {
     ], cb)
 });
 
+gulp.task('cordova clean merges', (cb) => {
+    return del([
+        configuration.paths.cordovaMerges + configuration.allFiles
+    ], cb)
+});
+
 gulp.task('cordova clean www', (cb) => {
     return del([
         configuration.paths.cordovaWWW + configuration.allFiles
     ], cb)
 });
+
+gulp.task('cordova:clean', ['cordova clean platforms', 'cordova clean plugins', 'cordova clean merges', 'cordova clean www'])

@@ -43,6 +43,10 @@ gulp.task('js:optimize', ['js:babel', 'js:bower_modules'], function() {
         .pipe(gulp.dest(configuration.paths.dist));
 })
 
-gulp.task('js:no-optimize', ['js:babel', 'js:bower_modules'])
+gulp.task('js:no-optimize', ['js:babel', 'js:bower_modules'], function() {
+
+    return gulp.src(`${configuration.paths.temp}/**/*`)
+        .pipe(gulp.dest(configuration.paths.dist));
+})
 
 gulp.task('js', ['js:optimize']);

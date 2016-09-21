@@ -19,7 +19,7 @@ gulp.task('default', ['html', 'js', 'css'], (callback) => {
     callback()
 });
 
-gulp.task('cordova:no-min', ['html:no-replace', 'js:no-optimize', 'css'], (callback) => {
+gulp.task('cordova:no-min', ['html:no-replace', 'js:no-optimize'], (callback) => {
     console.log('\nPlaced files in ' + chalk.magenta(configuration.paths.dist));
     callback()
 });
