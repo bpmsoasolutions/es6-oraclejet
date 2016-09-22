@@ -2,6 +2,7 @@ import gulp from 'gulp'
 import replace from 'gulp-replace'
 import es from 'event-stream'
 import concat from 'gulp-concat'
+import sass from 'gulp-sass'
 
 import configuration from '../configuration'
 
@@ -56,7 +57,8 @@ gulp.task('assets:jet-common', function () {
 
 ///_______
 gulp.task('css', function () {
-    let appCss = gulp.src('src/css/*.css')
+    let appCss = gulp.src('src/scss/**/*.scss')
+        .pipe(sass.sync().on('error', sass.logError))
 
     //Font awesome
     let faCss = gulp.src('src/bower_modules/font-awesome/css/font-awesome.min.css')

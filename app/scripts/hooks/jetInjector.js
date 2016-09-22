@@ -168,8 +168,6 @@ function _addPlatformStyleClasses(content, platform)
   var newContent = content;
   var classesToAdd = ['oj-hybrid', 'oj-platform-cordova'];
 
-  console.log('HEY!')
-
   // if serving in the browser, pick up the actual platform from env
   if (platform === 'browser')
   {
