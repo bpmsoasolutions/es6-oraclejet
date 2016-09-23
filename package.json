@@ -44,5 +44,11 @@
     "cordova:android": "cd app;cordova prepare;cordova compile",
     "dev": "gulp serve:src",
     "build": "gulp serve:dist"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0"
+    ]
   }
 }
