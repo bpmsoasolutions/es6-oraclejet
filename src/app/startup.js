@@ -9,7 +9,6 @@ import 'ojs/ojnavigationlist'
 import 'ojs/ojknockout'
 import 'ojs/ojarraytabledatasource'
 import {copyright} from './config'
-
 import './register'
 
 jetKomponents.register(ko);

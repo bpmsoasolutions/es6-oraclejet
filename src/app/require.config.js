@@ -1,4 +1,6 @@
+// NOT ES6 take care
 // require.js looks for the following global when initializing
+
 var require = {
     baseUrl: ".",
     paths: {
@@ -12,7 +14,7 @@ var require = {
         "text":                 "bower_modules/requirejs-text/text",
         "promise":              "bower_modules/es6-promise/promise.min",
         "hammerjs":             "bower_modules/hammerjs/hammer.min",
-        "ojdnd":                "bower_modules/oraclejet/dist/js/libs/dnd-polyfill/dnd-polyfill.min",
+        "ojdnd":                "bower_modules/oraclejet/dist/js/libs/dnd-polyfill/dnd-polyfill-1.0.0.min",
         "ojs":                  "bower_modules/oraclejet/dist/js/libs/oj/debug",
         "ojL10n":               "bower_modules/oraclejet/dist/js/libs/oj/ojL10n",
         "ojtranslations":       "bower_modules/oraclejet/dist/js/libs/oj/resources",
@@ -24,5 +26,5 @@ var require = {
         'jquery': {
             exports: ['jQuery', '$']
         }
-    },
+    }
 };

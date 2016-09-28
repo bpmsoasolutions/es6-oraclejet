@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import ko from 'knockout';
 import template from 'text!./nav-bar.html';
 import {routes, title} from '../../app/config';
