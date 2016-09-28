@@ -3,8 +3,12 @@ import productTemplate from 'text!./product.html';
 
 class Model {
     constructor(route) {
-        console.log(route)
         this.route = route.router.currentRoute()
+        console.log(this.route.url)
+    }
+
+    dispose(){
+        console.log('dispose: Product')
     }
 }
 
