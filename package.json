@@ -2,50 +2,15 @@
   "name": "es6-oraclejet",
   "version": "0.0.0",
   "devDependencies": {
-    "babel-cli": "^6.14.0",
-    "babel-core": "^6.14.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-es2015-modules-amd": "^6.8.0",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-stage-0": "^6.5.0",
     "bower": "^1.7.9",
-    "browser-sync": "^2.16.0",
-    "chalk": "^1.1.3",
-    "concurrently": "^3.0.0",
-    "deeply": "^2.0.3",
-    "del": "^2.2.2",
-    "ncp": "^2.0.0",
-    "node-sass": "^3.10.0",
-    "nodemon": "^1.10.2",
-    "object-assign": "^4.0.1",
-    "require-dir": "^0.3.0",
-    "requirejs": "^2.3.1",
-    "ripple-emulator": "^0.9.36",
-    "shelljs": "^0.7.4",
-    "uglifycss": "0.0.21"
+    "jet-buildtool": "^1.2.0"
   },
   "dependencies": {},
   "scripts": {
-    "start:osx": "npm install;./node_modules/.bin/bower install",
-    "start:win": "npm install && node_modules\\.bin\\bower install",
-    "cli": "node cli",
-    "cli:dev": "./node_modules/.bin/babel-node cli",
-    "cli:compile": "./node_modules/.bin/babel-node cli",
-    "cordova:android": "cd app;cordova prepare;cordova compile",
-    "dev": "gulp serve:src",
-    "build": "gulp serve:dist",
-    "web:dev": "./node_modules/.bin/node-sass src/scss -o src/css",
-    "web:sass:dev:watch": "./node_modules/.bin/node-sass src/scss -o src/css -w",
-    "browser-sync:dev": "./node_modules/.bin/browser-sync start temp --files temp",
-    "serve:dev": "./node_modules/.bin/http-server -p 9090 temp",
-    "start": "./node_modules/.bin/concurrently 'npm run serve:dev' 'npm run browser-sync:dev'",
-    "watch:dev": "./node_modules/.bin/nodemon -q -w src/ --exec 'npm run build'",
-    "build:js:dev": "./node_modules/.bin/babel src --out-dir temp"
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "stage-0"
-    ]
+    "postinstall": "bower install",
+    "dev": "jb dev",
+    "cordova:start": "jb startCordova",
+    "cordova:dev": "jb devCordova",
+    "cordova:run": "jb runCordova"
   }
 }
