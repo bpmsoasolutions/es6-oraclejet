@@ -6,6 +6,4 @@ ko.components.register('product', { require: 'containers/product/product' });
 
 // Components:
 ko.components.register('bss-nav-bar', { require: 'components/nav-bar/nav-bar' });
-ko.components.register('bss-footer', {
-    template: { require: 'text!components/bss-footer/footer.html' }
-});
+ko.components.register('bss-footer', { require: 'components/bss-footer/footer' });

@@ -3,14 +3,22 @@
   "version": "0.0.0",
   "devDependencies": {
     "bower": "^1.7.9",
-    "jet-buildtool": "^1.2.0"
+    "jet-buildtool": "^1.6.7"
   },
-  "dependencies": {},
   "scripts": {
     "postinstall": "bower install",
-    "dev": "jb dev",
-    "cordova:start": "jb startCordova",
-    "cordova:dev": "jb devCordova",
-    "cordova:run": "jb runCordova"
+    "dev": "jb run dev",
+    "cordova:start": "jb run startCordova",
+    "cordova:dev": "jb run devCordova",
+    "cordova:build": "jb run buildCordova",
+    "cordova:serve": "jb run cordova.serve",
+    "cordova:build:dev": "jb run buildCordova android",
+    "cordova:build:prod": "jb run buildCordova production android",
+    "cordova:run:dev": "jb run buildCordova android device",
+    "cordova:run:prod": "jb run buildCordova production android device",
+    "cordova:release": "jb run releaseCordova android",
+    "cordova:release:device": "jb run releaseCordova android device",
+    "cordova:browser:dev": "jb run webCordova",
+    "cordova:browser:prod": "jb run webCordova production"
   }
 }

@@ -17,6 +17,7 @@ class MainModel {
     constructor() {
         this.copyright = copyright;
         this.router = router;
+        console.log(router.currentRoute())
     }
 }
 

@@ -10,7 +10,7 @@ import 'ojs/ojmenu'
 import 'ojs/ojinputtext'
 import 'ojs/ojoffcanvas'
 
-class NavBarViewModel {
+class viewModel {
     constructor (params) {
         // This viewmodel doesn't do anything except pass through the 'route' parameter to the view.
         // You could remove this viewmodel entirely, and define 'nav-bar' as a template-only component.
@@ -22,7 +22,7 @@ class NavBarViewModel {
         this.smScreen = oj.ResponsiveKnockoutUtils.createMediaQueryObservable(smQuery);
 
         this.routes = new oj.ArrayTableDataSource(routes, {idAttribute: 'container'});
-        this.selectedItem = ko.observable('home');
+        this.selectedItem = ko.observable(this.route().container);
     }
 
     menuItemSelect(event, ui) {
@@ -47,4 +47,4 @@ class NavBarViewModel {
     }
 }
 
-export default { viewModel: NavBarViewModel, template: template };
+export default { viewModel, template };

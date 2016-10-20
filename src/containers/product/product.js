@@ -1,10 +1,10 @@
 import ko from 'knockout';
-import productTemplate from 'text!./product.html';
+import template from 'text!./product.html';
 
-class Model {
+class viewModel {
     constructor(route) {
         this.route = route.router.currentRoute()
-        console.log(this.route.url)
+        console.log(this.route)
     }
 
     dispose(){
@@ -12,4 +12,4 @@ class Model {
     }
 }
 
-export default { viewModel: Model, template: productTemplate };
+export default { viewModel, template };
