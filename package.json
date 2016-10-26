@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "devDependencies": {
     "bower": "^1.7.9",
-    "jet-buildtool": "^1.6.7"
+    "jet-buildtool": "^1.6.9"
   },
   "scripts": {
     "postinstall": "bower install",
